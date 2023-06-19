@@ -2,10 +2,8 @@
 const axios = require("axios");
 // Importing chalk module for colorizing console output
 const chalk = require("chalk");
-// Importing dotenv module for loading environment variables from .env file
 require("dotenv").config();
 
-// Getting API key from environment variables
 const API_KEY = process.env.API_KEY;
 
 // Controller function for getting weather data for a city
@@ -40,6 +38,8 @@ exports.getWeather = (req, res) => {
                 const sunset = new Date(
                     currentWeatherResponse.data.sys.sunset * 1000
                 ).toLocaleTimeString();
+                console.log(chalk.red(`Sunrise: ${sunrise}`));
+                console.log(chalk.red(`sunset: ${sunset}`));
                 const forecast = forecastResponse.data.list;
 
                 // Sending weather data as JSON response to client
